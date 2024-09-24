@@ -29,24 +29,24 @@ const App = () => {
     <>
     <Header />
     <Sidebar />
-    <div className="pl-[256px]">
-      <h1 className="pt-[128px] text-[48px] leading-none">
+    <div className="pl-[256px] max-[1400px]:pl-[160px]">
+      <h1 className="pt-[128px] text-[48px] leading-none max-[1400px]:pt-[32px]">
         Bonjour <span className="text-[#ff0101]">{username}</span>
       </h1>
       <p className="mt-8 mb-16 text-[18px]">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-      <div className="flex gap-[30px]">
+      <div className="flex gap-[30px] max-[1400px]:w-[835px] max-[1310px]:scale-75 max-[1310px]:relative max-[1310px]:-left-[104px] max-[1310px]:-top-[64px]">
         <div className='inline-flex flex-col gap-[30px]'>
-          <div className='flex justify-center items-center w-[835px] h-[320px] p-2 rounded-[5px] bg-[#fbfbfb]'>
+          <div className='relative flex justify-center items-end w-[835px] h-[320px] pb-6 rounded-[5px] bg-[#fbfbfb]'>
             <DailyActivity dataSource={dataSource} />
           </div>
           <div className="flex justify-between">
-            <div className='w-[258px] h-[263px] rounded-[5px] bg-[#FF0000]'>
+            <div className='relative w-[258px] h-[263px] rounded-[5px] bg-[#FF0000]'>
               <AverageSessions dataSource={dataSource} />
             </div>
-            <div className='w-[258px] h-[263px] p-2 rounded-[5px] bg-[#282d30]'>
+            <div className='flex justify-center items-center w-[258px] h-[263px] rounded-[5px] bg-[#282d30]'>
               <Performances dataSource={dataSource} />
             </div>
-            <div className='w-[258px] h-[263px] rounded-[5px] bg-[#fbfbfb]'>
+            <div className='relative flex justify-center items-center w-[258px] h-[263px] rounded-[5px] bg-[#fbfbfb]'>
               <Score dataSource={dataSource} />
             </div>
           </div>

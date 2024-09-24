@@ -2,7 +2,7 @@ import logo from "../../assets/logo.svg";
 
 const Header = () => {
   return (
-    <header className="w-full text-white bg-[#020203] p-8 pr-64 shadow-lg">
+    <header className="w-full text-white bg-[#020203] p-8 pr-32 shadow-lg max-[1300px]:pr-32">
       <nav>
         <ul className="flex justify-between items-center text-[24px]">
           <li>
