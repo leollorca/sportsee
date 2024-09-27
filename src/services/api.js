@@ -25,12 +25,16 @@ export const getUsername = async (source) => {
 
 export const getScore = async (source) => {
   if (source === "mock") {
-    return USER_MAIN_DATA.find((user) => user.id === 18);
+    const user = USER_MAIN_DATA.find((user) => user.id === 18);
+    const formattedScore = { name: "Score", value: user.todayScore || user.score, fill: "#ff0000" };
+    
+    return formattedScore;
   }
   
   const { data } = await request();
+  const formattedScore = { name: "Score", value: data.todayScore || data.score, fill: "#ff0000" };
   
-  return data;
+  return formattedScore;
 };
 
 

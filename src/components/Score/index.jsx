@@ -9,9 +9,7 @@ const Score = ({ dataSource }) => {
   const getData = async () => {
     const data = await getScore(dataSource);
 
-    const formattedScore = { name: "Score", value: data.todayScore || data.score, fill: "#ff0000" };
-
-    setScore(formattedScore);
+    setScore(data);
   };
 
   useEffect(() => {
