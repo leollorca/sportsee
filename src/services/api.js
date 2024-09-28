@@ -1,4 +1,6 @@
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../data';
+import Score from './score';
+import Performances from './performances';
 
 const request = async (url) => {
   try {
@@ -25,14 +27,16 @@ export const getUsername = async (source) => {
 
 export const getScore = async (source) => {
   if (source === "mock") {
-    const user = USER_MAIN_DATA.find((user) => user.id === 18);
-    const formattedScore = { name: "Score", value: user.todayScore || user.score, fill: "#ff0000" };
+    const data = USER_MAIN_DATA.find((user) => user.id === 18);
+    const score = new Score(data);
+    const formattedScore = { name: "Score", value: score.value, fill: "#ff0000" };
     
     return formattedScore;
   }
   
   const { data } = await request();
-  const formattedScore = { name: "Score", value: data.todayScore || data.score, fill: "#ff0000" };
+  const score = new Score(data);
+  const formattedScore = { name: "Score", value: score.value, fill: "#ff0000" };
   
   return formattedScore;
 };
@@ -76,10 +80,14 @@ export const getAverageSessions = async (source) => {
 
 export const getPerformances = async (source) => {
   if (source === "mock") {
-    return USER_PERFORMANCE.find((user) => user.userId === 18);
+    const data = USER_PERFORMANCE.find((user) => user.userId === 18);
+    const performances = new Performances(data);
+    
+    return performances.formatPerformances();
   }
 
   const { data } = await request("performance");
+  const performances = new Performances(data);
 
-  return data;
+  return performances.formatPerformances();
 };
